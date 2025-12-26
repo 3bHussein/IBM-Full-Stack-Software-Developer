@@ -1,226 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Nutrition Dashboard</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="foods.js"></script>
-
-<style>
-body{margin:0;font-family:Arial;background:#f5f7f9}
-.container{padding:24px;max-width:1200px;margin:auto}
-.card{background:#fff;border:1px solid #e5e7eb;border-radius:8px;padding:16px;margin-bottom:16px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
-.progress{height:8px;background:#e5e7eb;border-radius:6px;overflow:hidden}
-.bar{height:100%;background:#0f766e}
-button{background:#0f766e;color:#fff;border:none;padding:8px 12px;border-radius:6px;cursor:pointer}
-button.danger{background:#dc2626}
-input,select{width:100%;padding:8px;margin-bottom:8px}
-table{width:100%;border-collapse:collapse}
-th,td{padding:8px;border-bottom:1px solid #e5e7eb;text-align:center}
-.week{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
-.day{padding:8px;background:#fff;border:1px solid #e5e7eb;border-radius:6px;text-align:center}
-small{color:#6b7280}
-</style>
+  <meta charset="UTF-8">
+  <title>Nutrition Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles.css">
+  <script src="foods.js"></script>
 </head>
 
 <body>
 <div class="container">
-<h1>Nutrition Dashboard</h1>
+  <h1>Nutrition Dashboard</h1>
 
-<!-- SUMMARY -->
-<div class="grid">
-  <div class="card">
-    <h3>🔥 Calories</h3>
-    <b><span id="calories">0</span> / <span id="goalText">2000</span> kcal</b>
-    <div class="progress"><div id="calBar" class="bar"></div></div>
-    <button onclick="openGoal()">🎯 Set Weight Loss Goal</button>
+  <!-- SUMMARY -->
+  <div class="grid">
+    <div class="card">
+      <h3>🔥 Calories</h3>
+      <b><span id="calories">0</span> / <span id="goalText">2000</span> kcal</b>
+      <div class="progress"><div id="calBar" class="bar"></div></div>
+      <button id="goalBtn">🎯 Set Weight Loss Goal</button>
+    </div>
+
+    <div class="card"><h3>💪 Protein</h3><b id="protein">0</b> g</div>
+    <div class="card"><h3>🥑 Fat</h3><b id="fat">0</b> g</div>
+    <div class="card"><h3>🍞 Carbs</h3><b id="carbs">0</b> g</div>
   </div>
-  <div class="card"><h3>💪 Protein</h3><b id="protein">0</b> g</div>
-  <div class="card"><h3>🥑 Fat</h3><b id="fat">0</b> g</div>
-  <div class="card"><h3>🍞 Carbs</h3><b id="carbs">0</b> g</div>
-</div>
 
-<!-- ADD MEAL -->
-<div class="card">
-<h3>Add Meal</h3>
+  <!-- ADD MEAL -->
+  <div class="card sticky">
+    <h3>Add Meal</h3>
 
-<select id="day"></select>
+    <select id="day"></select>
+    <select id="meal">
+      <option>Breakfast</option>
+      <option>Lunch</option>
+      <option>Dinner</option>
+      <option>Snack</option>
+    </select>
 
-<select id="meal">
-  <option>Breakfast</option>
-  <option>Lunch</option>
-  <option>Dinner</option>
-  <option>Snack</option>
-</select>
+    <input id="search" placeholder="Search food…">
+    <select id="food"></select>
 
-<input placeholder="Search food…" oninput="filterFoods(this.value)">
-<select id="food" onchange="fillFood()"></select>
+    <select id="portion">
+      <option value="0.5">50 g</option>
+      <option value="1" selected>100 g</option>
+      <option value="1.5">150 g</option>
+      <option value="2">200 g</option>
+    </select>
 
-<select id="portion" onchange="fillFood()">
-  <option value="0.5">50 g</option>
-  <option value="1" selected>100 g</option>
-  <option value="1.5">150 g</option>
-  <option value="2">200 g</option>
-</select>
+    <small id="info"></small>
 
-<small id="info"></small>
+    <input id="cal" placeholder="Calories">
+    <input id="p" placeholder="Protein (g)">
+    <input id="f" placeholder="Fat (g)">
+    <input id="c" placeholder="Carbs (g)">
 
-<input id="cal" placeholder="Calories">
-<input id="p" placeholder="Protein (g)">
-<input id="fatInput" placeholder="Fat (g)">
-<input id="c" placeholder="Carbs (g)">
+    <button id="addBtn">Add Meal</button>
+  </div>
 
-<button onclick="addMeal()">Add Meal</button>
-</div>
+  <!-- MEALS -->
+  <div class="card">
+    <h3>Meals</h3>
+    <button class="danger" id="clearBtn">Clear Day</button>
 
-<!-- MEALS -->
-<div class="card">
-<h3>Meals</h3>
-<button class="danger" onclick="clearDay()">Clear Day</button>
-<table>
-<thead>
-<tr>
-  <th>Meal</th><th>Food</th><th>Portion</th>
-  <th>Cal</th><th>P</th><th>F</th><th>C</th><th>X</th>
-</tr>
-</thead>
-<tbody id="table"></tbody>
-</table>
-</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Meal</th><th>Food</th><th>Portion</th>
+          <th>Cal</th><th>P</th><th>F</th><th>C</th><th>X</th>
+        </tr>
+      </thead>
+      <tbody id="table"></tbody>
+    </table>
+  </div>
 
-<!-- WEEK -->
-<div class="card">
-<h3>Weekly Calories</h3>
-<div class="week" id="week"></div>
-</div>
+  <!-- WEEK -->
+  <div class="card">
+    <h3>Weekly Calories</h3>
+    <div class="week" id="week"></div>
+  </div>
 </div>
 
 <!-- GOAL MODAL -->
-<div id="modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6)">
-  <div class="card" style="max-width:700px;margin:5% auto">
-    <iframe src="https://www.calculator.net/calorie-calculator.html"
-      style="width:100%;height:300px"></iframe>
+<div id="modal" class="modal">
+  <div class="card modal-box">
+    <!-- <iframe src="https://www.calculator.net/calorie-calculator.html"></iframe> -->
+<iframe 
+  src="https://www.calculator.net/calorie-calculator.html"
+  class="goal-iframe">
+</iframe>
     <input id="maint" placeholder="Maintenance calories">
-    <button onclick="applyGoal()">Apply</button>
-    <button onclick="closeGoal()">Cancel</button>
+    <button id="applyGoal">Apply</button>
+    <button id="closeGoal">Cancel</button>
   </div>
 </div>
 
-<script>
-/* ---------- DATA ---------- */
-const foods = window.FOODS_DB;
-const days = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
-
-/* ---------- STATE ---------- */
-function loadState(){
-  let raw = JSON.parse(localStorage.getItem("data")) || {};
-  const s = {};
-  days.forEach(d=>s[d]=raw[d] || {meals:[]});
-  return s;
-}
-
-let state = loadState();
-let selectedDay = localStorage.getItem("selectedDay") || "Mon";
-let goal = +localStorage.getItem("goal") || 2000;
-goalText.innerText = goal;
-
-/* ---------- INIT ---------- */
-days.forEach(d=>day.innerHTML+=`<option>${d}</option>`);
-day.value = selectedDay;
-
-renderFoods();
-food.selectedIndex = 0;
-fillFood();
-render();
-
-/* ---------- EVENTS ---------- */
-day.addEventListener("change",()=>{
-  selectedDay = day.value;
-  localStorage.setItem("selectedDay",selectedDay);
-  render();
-});
-
-/* ---------- FOOD ---------- */
-function renderFoods(filter=""){
-  food.innerHTML="";
-  Object.keys(foods)
-    .filter(f=>f.toLowerCase().includes(filter.toLowerCase()))
-    .forEach(f=>food.innerHTML+=`<option>${f}</option>`);
-}
-function filterFoods(q){renderFoods(q)}
-
-function fillFood(){
-  const foodObj = foods[food.value];
-  if(!foodObj) return;
-
-  const m = foodObj.unit==="100g" ? +portion.value : 1;
-
-  cal.value = Math.round(foodObj.cal * m);
-  p.value   = (foodObj.p * m).toFixed(1);
-  fatInput.value = (foodObj.f * m).toFixed(1);
-  c.value   = (foodObj.c * m).toFixed(1);
-
-  info.innerText = `Nutrition per ${foodObj.unit}`;
-}
-
-/* ---------- CORE ---------- */
-function addMeal(){
-  state[selectedDay].meals.push({
-    meal: meal.value,
-    food: food.value,
-    portion: portion.options[portion.selectedIndex].text,
-    cal:+cal.value||0,
-    p:+p.value||0,
-    f:+fatInput.value||0,
-    c:+c.value||0
-  });
-  save(); render();
-}
-
-function totals(d){
-  return state[d].meals.reduce((t,m)=>({
-    cal:t.cal+m.cal,
-    p:t.p+m.p,
-    f:t.f+m.f,
-    c:t.c+m.c
-  }),{cal:0,p:0,f:0,c:0});
-}
-
-/* ---------- RENDER ---------- */
-function render(){
-  const t = totals(selectedDay);
-
-  calories.innerText = t.cal;
-  protein.innerText  = t.p.toFixed(1);
-  fat.innerText      = t.f.toFixed(1);
-  carbs.innerText    = t.c.toFixed(1);
-  calBar.style.width = Math.min(t.cal/goal*100,100)+"%";
-
-  table.innerHTML="";
-  state[selectedDay].meals.forEach((m,i)=>table.innerHTML+=`
-    <tr>
-      <td>${m.meal}</td><td>${m.food}</td><td>${m.portion}</td>
-      <td>${m.cal}</td><td>${m.p}</td><td>${m.f}</td><td>${m.c}</td>
-      <td><button onclick="del(${i})">X</button></td>
-    </tr>`);
-
-  week.innerHTML="";
-  days.forEach(d=>week.innerHTML+=`<div class="day">${d}<br>${totals(d).cal}</div>`);
-}
-
-/* ---------- UTILS ---------- */
-function del(i){state[selectedDay].meals.splice(i,1);save();render()}
-function clearDay(){if(confirm("Clear this day?")){state[selectedDay].meals=[];save();render()}}
-function openGoal(){modal.style.display="block"}
-function closeGoal(){modal.style.display="none"}
-function applyGoal(){
-  goal = +maint.value - 500;
-  localStorage.setItem("goal",goal);
-  goalText.innerText = goal;
-  closeGoal(); render();
-}
-function save(){localStorage.setItem("data",JSON.stringify(state))}
-</script>
+<script src="app.js"></script>
 </body>
 </html>

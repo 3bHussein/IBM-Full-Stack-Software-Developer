@@ -1,0 +1,146 @@
+:root{
+  --bg:#f5f7f9;
+  --card:#fff;
+  --text:#111;
+  --border:#e5e7eb;
+  --primary:#0f766e;
+}
+
+body.dark{
+  --bg:#0f172a;
+  --card:#020617;
+  --text:#e5e7eb;
+  --border:#1e293b;
+}
+
+body{
+  margin:0;
+  font-family:Arial;
+  background:var(--bg);
+  color:var(--text);
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:24px;
+}
+
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:16px;
+  margin-bottom:16px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:16px;
+}
+
+.progress{
+  height:8px;
+  background:#ddd;
+  border-radius:6px;
+  overflow:hidden;
+}
+
+#calBar{
+  height:100%;
+  background:var(--primary);
+}
+
+button{
+  background:var(--primary);
+  color:#fff;
+  border:none;
+  padding:8px 14px;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+button.danger{background:#dc2626}
+
+input,select{
+  width:100%;
+  padding:8px;
+  margin-bottom:8px;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+th,td{
+  padding:8px;
+  border-bottom:1px solid var(--border);
+  text-align:center;
+}
+
+.week{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:8px;
+}
+
+.day{
+  background:var(--card);
+  border:1px solid var(--border);
+  padding:8px;
+  border-radius:8px;
+  text-align:center;
+}
+
+.sticky{
+  position:sticky;
+  top:16px;
+}
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.6);
+}
+
+.modal-box{
+  background:var(--card);
+  max-width:700px;
+  margin:5vh auto;
+  padding:16px;
+  border-radius:12px;
+}
+/* ---------- GOAL MODAL FIX ---------- */
+
+.modal-box{
+  width:90%;
+  max-width:900px;
+  height:80vh;
+  display:flex;
+  flex-direction:column;
+}
+
+.goal-iframe{
+  width:100%;
+  flex:1;              /* يخلي iframe يتمدد */
+  border:none;
+  border-radius:8px;
+  background:#fff;
+}
+
+.modal-box input{
+  margin-top:12px;
+}
+
+.modal-box button{
+  margin-top:8px;
+}
