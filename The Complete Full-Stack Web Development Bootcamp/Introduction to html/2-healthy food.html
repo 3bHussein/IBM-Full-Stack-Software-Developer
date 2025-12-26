@@ -1,89 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Healthy Nutrition Guide | Food & Daily Habits</title>
+    <title>Nutrition | Fitness App</title>
 
     <!-- SEO -->
-    <meta name="description" content="A professional overview of healthy food categories and daily nutrition habits for balanced living." />
-    <meta name="author" content="Nutrition Team" />
+    <meta name="description" content="Healthy nutrition guidelines and daily habits designed for a modern fitness application." />
 
     <!-- Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --primary: #0f766e;
-            --secondary: #374151;
-            --background: #f9fafb;
+            --primary: #22c55e;
+            --primary-dark: #15803d;
+            --text-main: #111827;
+            --text-muted: #6b7280;
+            --bg-main: #f9fafb;
             --card-bg: #ffffff;
             --border: #e5e7eb;
+        }
+
+        * {
+            box-sizing: border-box;
         }
 
         body {
             margin: 0;
             font-family: "Inter", sans-serif;
-            background-color: var(--background);
-            color: var(--secondary);
-            line-height: 1.7;
+            background-color: var(--bg-main);
+            color: var(--text-main);
         }
+
+        /* ---------- APP HEADER ---------- */
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: #ffffff;
+            padding: 2.5rem 1.5rem;
+        }
+
+        header h1 {
+            margin: 0 0 0.5rem;
+            font-size: 2.2rem;
+            font-weight: 700;
+        }
+
+        header p {
+            margin: 0;
+            max-width: 500px;
+            font-size: 1rem;
+            opacity: 0.95;
+        }
+
+        /* ---------- MAIN ---------- */
 
         main {
             max-width: 900px;
             margin: 0 auto;
-            padding: 3rem 1.5rem;
+            padding: 2.5rem 1.5rem 4rem;
         }
 
-        header {
-            margin-bottom: 3rem;
-        }
+        /* ---------- CARD ---------- */
 
-        h1 {
-            font-size: 2.4rem;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        header p {
-            max-width: 600px;
-            font-size: 1.05rem;
-            color: #4b5563;
-        }
-
-        section {
-            margin-bottom: 2.5rem;
+        .card {
             background-color: var(--card-bg);
+            border-radius: 16px;
             padding: 2rem;
-            border-radius: 12px;
+            margin-bottom: 2rem;
             border: 1px solid var(--border);
         }
 
-        h2 {
+        .card h2 {
+            margin: 0 0 1rem;
             font-size: 1.4rem;
-            margin-bottom: 1rem;
-            color: #065f46;
+            font-weight: 600;
+            color: var(--primary-dark);
         }
 
-        ul, ol {
+        .card p {
+            margin-bottom: 1.2rem;
+            color: var(--text-muted);
+        }
+
+        /* ---------- LISTS ---------- */
+
+        ul,
+        ol {
             padding-left: 1.5rem;
+            margin: 0;
         }
 
         li {
-            margin-bottom: 0.6rem;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
         }
+
+        /* ---------- FOOTER ---------- */
 
         footer {
-            margin-top: 4rem;
             text-align: center;
-            font-size: 0.9rem;
-            color: #6b7280;
+            padding: 2rem 1rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+            background-color: #ffffff;
         }
 
+        /* ---------- MOBILE ---------- */
+
         @media (max-width: 600px) {
-            h1 {
-                font-size: 2rem;
+            header h1 {
+                font-size: 1.9rem;
             }
         }
     </style>
@@ -91,45 +121,56 @@
 
 <body>
 
+<!-- APP HEADER -->
+<header>
+    <h1>Nutrition</h1>
+    <p>
+        Fuel your body with balanced nutrition to support performance,
+        recovery, and long-term health.
+    </p>
+</header>
+
+<!-- MAIN CONTENT -->
 <main>
 
-    <header>
-        <h1>Healthy Nutrition Guide</h1>
-        <p>
-            A professional overview of essential healthy food categories and
-            daily nutrition practices designed to support long-term well-being.
-        </p>
-    </header>
-
     <!-- UNORDERED LIST -->
-    <section>
-        <h2>Core Healthy Food Categories</h2>
+    <section class="card">
+        <h2>Recommended Healthy Food Groups</h2>
+        <p>
+            These food groups form the foundation of a balanced fitness-oriented diet.
+        </p>
+
         <ul>
-            <li>Fresh fruits and vegetables</li>
-            <li>Whole grains (brown rice, oats, quinoa)</li>
-            <li>Lean protein sources (fish, poultry, legumes)</li>
-            <li>Healthy fats (olive oil, nuts, seeds)</li>
+            <li>Fresh fruits and vegetables (vitamins & antioxidants)</li>
+            <li>Lean proteins (chicken, fish, eggs, legumes)</li>
+            <li>Whole grains (oats, brown rice, quinoa)</li>
+            <li>Healthy fats (avocado, olive oil, nuts)</li>
             <li>Low-fat dairy or plant-based alternatives</li>
         </ul>
     </section>
 
     <!-- ORDERED LIST -->
-    <section>
-        <h2>Daily Healthy Eating Guidelines</h2>
+    <section class="card">
+        <h2>Daily Nutrition Best Practices</h2>
+        <p>
+            Follow these steps daily to maximize energy levels and workout performance.
+        </p>
+
         <ol>
-            <li>Begin the day with a nutrient-rich breakfast</li>
-            <li>Include vegetables in every main meal</li>
-            <li>Choose whole foods over processed options</li>
-            <li>Maintain adequate daily hydration</li>
-            <li>Limit added sugars and refined carbohydrates</li>
+            <li>Start your day with a protein-rich breakfast</li>
+            <li>Consume balanced meals every 3–4 hours</li>
+            <li>Hydrate consistently throughout the day</li>
+            <li>Refuel with protein and carbs post-workout</li>
+            <li>Limit processed foods and added sugars</li>
         </ol>
     </section>
 
-    <footer>
-        © 2025 • Healthy Nutrition Guide • Professional Use
-    </footer>
-
 </main>
+
+<!-- FOOTER -->
+<footer>
+    © 2025 • Fitness App Nutrition Module
+</footer>
 
 </body>
 </html>
