@@ -1,176 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Nutrition | Fitness App</title>
+<title>Nutrition | Fitness App</title>
+<meta name="description" content="Complete nutrition module for a fitness application including meal plans, macros, progress tracking, and healthy food guidance.">
 
-    <!-- SEO -->
-    <meta name="description" content="Healthy nutrition guidelines and daily habits designed for a modern fitness application." />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <!-- Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary:#22c55e;
+  --primary-dark:#15803d;
+  --bg:#f9fafb;
+  --card:#ffffff;
+  --text:#111827;
+  --muted:#6b7280;
+  --border:#e5e7eb;
+}
+[data-theme="dark"] {
+  --bg:#0f172a;
+  --card:#020617;
+  --text:#ffffff;
+  --muted:#9ca3af;
+  --border:#1f2937;
+}
+* { box-sizing:border-box; }
 
-    <style>
-        :root {
-            --primary: #22c55e;
-            --primary-dark: #15803d;
-            --text-main: #111827;
-            --text-muted: #6b7280;
-            --bg-main: #f9fafb;
-            --card-bg: #ffffff;
-            --border: #e5e7eb;
-        }
+body {
+  margin:0;
+  font-family:Inter,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
 
-        * {
-            box-sizing: border-box;
-        }
+header {
+  background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+  color:white;
+  padding:2.5rem 1.5rem;
+}
 
-        body {
-            margin: 0;
-            font-family: "Inter", sans-serif;
-            background-color: var(--bg-main);
-            color: var(--text-main);
-        }
+header h1 { margin:0 0 .5rem; font-size:2.2rem; }
+header p { max-width:550px; opacity:.95; }
 
-        /* ---------- APP HEADER ---------- */
+.controls {
+  display:flex;
+  gap:1rem;
+  flex-wrap:wrap;
+  margin-top:1.5rem;
+}
 
-        header {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: #ffffff;
-            padding: 2.5rem 1.5rem;
-        }
+.controls input, .controls button {
+  padding:.7rem 1rem;
+  border-radius:10px;
+  border:none;
+  font-size:.95rem;
+}
 
-        header h1 {
-            margin: 0 0 0.5rem;
-            font-size: 2.2rem;
-            font-weight: 700;
-        }
+.controls input { flex:1; }
+.controls button {
+  background:white;
+  cursor:pointer;
+  font-weight:600;
+}
 
-        header p {
-            margin: 0;
-            max-width: 500px;
-            font-size: 1rem;
-            opacity: 0.95;
-        }
+main {
+  max-width:1000px;
+  margin:auto;
+  padding:2.5rem 1.5rem 4rem;
+}
 
-        /* ---------- MAIN ---------- */
+.card {
+  background:var(--card);
+  border-radius:16px;
+  padding:2rem;
+  margin-bottom:2rem;
+  border:1px solid var(--border);
+}
 
-        main {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 2.5rem 1.5rem 4rem;
-        }
+.card h2 {
+  margin-top:0;
+  color:var(--primary-dark);
+}
 
-        /* ---------- CARD ---------- */
+ul,ol { padding-left:1.5rem; }
+li { margin-bottom:.6rem; }
 
-        .card {
-            background-color: var(--card-bg);
-            border-radius: 16px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border: 1px solid var(--border);
-        }
+.badges span {
+  display:inline-block;
+  padding:.35rem .7rem;
+  background:rgba(34,197,94,.15);
+  color:var(--primary-dark);
+  border-radius:999px;
+  font-size:.75rem;
+  margin-right:.4rem;
+  margin-bottom:.4rem;
+}
 
-        .card h2 {
-            margin: 0 0 1rem;
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: var(--primary-dark);
-        }
+.progress-bar {
+  background:#e5e7eb;
+  border-radius:999px;
+  height:10px;
+  overflow:hidden;
+  margin-top:.4rem;
+}
+.progress-bar div {
+  height:100%;
+  background:var(--primary);
+}
 
-        .card p {
-            margin-bottom: 1.2rem;
-            color: var(--text-muted);
-        }
+.meal {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:1rem;
+  padding-bottom:1rem;
+  border-bottom:1px solid var(--border);
+}
 
-        /* ---------- LISTS ---------- */
+.meal:last-child { border:none; }
 
-        ul,
-        ol {
-            padding-left: 1.5rem;
-            margin: 0;
-        }
+footer {
+  text-align:center;
+  padding:2rem;
+  font-size:.85rem;
+  color:var(--muted);
+  border-top:1px solid var(--border);
+  background:var(--card);
+}
 
-        li {
-            margin-bottom: 0.8rem;
-            font-size: 0.95rem;
-        }
-
-        /* ---------- FOOTER ---------- */
-
-        footer {
-            text-align: center;
-            padding: 2rem 1rem;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            border-top: 1px solid var(--border);
-            background-color: #ffffff;
-        }
-
-        /* ---------- MOBILE ---------- */
-
-        @media (max-width: 600px) {
-            header h1 {
-                font-size: 1.9rem;
-            }
-        }
-    </style>
+@media(max-width:600px){
+  header h1{font-size:1.9rem;}
+}
+</style>
 </head>
 
-<body>
+<body data-theme="light">
 
-<!-- APP HEADER -->
 <header>
-    <h1>Nutrition</h1>
-    <p>
-        Fuel your body with balanced nutrition to support performance,
-        recovery, and long-term health.
-    </p>
+  <h1>Nutrition</h1>
+  <p>Optimize performance, recovery, and long-term health with structured nutrition.</p>
+
+  <div class="controls">
+    <input type="text" placeholder="Search foods or meals...">
+    <button onclick="toggleTheme()">Toggle Dark Mode</button>
+  </div>
 </header>
 
-<!-- MAIN CONTENT -->
 <main>
 
-    <!-- UNORDERED LIST -->
-    <section class="card">
-        <h2>Recommended Healthy Food Groups</h2>
-        <p>
-            These food groups form the foundation of a balanced fitness-oriented diet.
-        </p>
+<!-- FOOD GROUPS -->
+<section class="card">
+<h2>Healthy Food Groups</h2>
+<ul>
+<li>Fresh fruits & vegetables</li>
+<li>Lean proteins (chicken, fish, legumes)</li>
+<li>Whole grains (oats, quinoa, brown rice)</li>
+<li>Healthy fats (olive oil, avocado, nuts)</li>
+<li>Low-fat dairy or alternatives</li>
+</ul>
+</section>
 
-        <ul>
-            <li>Fresh fruits and vegetables (vitamins & antioxidants)</li>
-            <li>Lean proteins (chicken, fish, eggs, legumes)</li>
-            <li>Whole grains (oats, brown rice, quinoa)</li>
-            <li>Healthy fats (avocado, olive oil, nuts)</li>
-            <li>Low-fat dairy or plant-based alternatives</li>
-        </ul>
-    </section>
+<!-- DAILY RULES -->
+<section class="card">
+<h2>Daily Nutrition Rules</h2>
+<ol>
+<li>Eat protein with every meal</li>
+<li>Hydrate consistently</li>
+<li>Balance carbs around workouts</li>
+<li>Limit sugar & processed foods</li>
+<li>Sleep 7–8 hours for recovery</li>
+</ol>
+</section>
 
-    <!-- ORDERED LIST -->
-    <section class="card">
-        <h2>Daily Nutrition Best Practices</h2>
-        <p>
-            Follow these steps daily to maximize energy levels and workout performance.
-        </p>
+<!-- MACROS -->
+<section class="card">
+<h2>Daily Macro Targets</h2>
+<div class="badges">
+<span>Protein: 150g</span>
+<span>Carbs: 220g</span>
+<span>Fat: 65g</span>
+<span>Calories: 2,300 kcal</span>
+</div>
 
-        <ol>
-            <li>Start your day with a protein-rich breakfast</li>
-            <li>Consume balanced meals every 3–4 hours</li>
-            <li>Hydrate consistently throughout the day</li>
-            <li>Refuel with protein and carbs post-workout</li>
-            <li>Limit processed foods and added sugars</li>
-        </ol>
-    </section>
+<p>Protein Progress</p>
+<div class="progress-bar"><div style="width:75%"></div></div>
+
+<p>Carbs Progress</p>
+<div class="progress-bar"><div style="width:60%"></div></div>
+</section>
+
+<!-- MEAL PLAN -->
+<section class="card">
+<h2>Today's Meal Plan</h2>
+
+<div class="meal">
+<strong>Breakfast</strong>
+<span>Oats + Eggs • 450 kcal</span>
+</div>
+
+<div class="meal">
+<strong>Lunch</strong>
+<span>Grilled Chicken + Rice • 650 kcal</span>
+</div>
+
+<div class="meal">
+<strong>Snack</strong>
+<span>Greek Yogurt + Nuts • 300 kcal</span>
+</div>
+
+<div class="meal">
+<strong>Dinner</strong>
+<span>Salmon + Vegetables • 550 kcal</span>
+</div>
+</section>
 
 </main>
 
-<!-- FOOTER -->
 <footer>
-    © 2025 • Fitness App Nutrition Module
+© 2025 • Fitness App Nutrition System
 </footer>
+
+<script>
+function toggleTheme(){
+  const body=document.body;
+  body.dataset.theme=body.dataset.theme==="dark"?"light":"dark";
+}
+</script>
 
 </body>
 </html>
