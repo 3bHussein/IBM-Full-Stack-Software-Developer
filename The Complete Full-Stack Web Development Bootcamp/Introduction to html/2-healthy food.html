@@ -4,62 +4,132 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Healthy Food Lists</title>
-    <meta name="description" content="Examples of unordered and ordered lists featuring healthy food choices." />
+    <title>Healthy Nutrition Guide | Food & Daily Habits</title>
+
+    <!-- SEO -->
+    <meta name="description" content="A professional overview of healthy food categories and daily nutrition habits for balanced living." />
+    <meta name="author" content="Nutrition Team" />
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
     <style>
+        :root {
+            --primary: #0f766e;
+            --secondary: #374151;
+            --background: #f9fafb;
+            --card-bg: #ffffff;
+            --border: #e5e7eb;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f9fafb;
-            color: #111827;
-            line-height: 1.6;
-            padding: 2rem;
+            margin: 0;
+            font-family: "Inter", sans-serif;
+            background-color: var(--background);
+            color: var(--secondary);
+            line-height: 1.7;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        header {
+            margin-bottom: 3rem;
         }
 
         h1 {
-            color: #166534;
+            font-size: 2.4rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            max-width: 600px;
+            font-size: 1.05rem;
+            color: #4b5563;
+        }
+
+        section {
+            margin-bottom: 2.5rem;
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
         }
 
         h2 {
-            margin-top: 2rem;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
             color: #065f46;
         }
 
         ul, ol {
-            background-color: #ffffff;
-            padding: 1.5rem 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            max-width: 500px;
+            padding-left: 1.5rem;
         }
 
         li {
             margin-bottom: 0.6rem;
+        }
+
+        footer {
+            margin-top: 4rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <h1>Healthy Food</h1>
+<main>
 
-    <h2>Unordered List (Healthy Food Items)</h2>
-    <ul>
-        <li>Fresh Fruits</li>
-        <li>Vegetables</li>
-        <li>Whole Grains</li>
-        <li>Lean Proteins</li>
-        <li>Nuts and Seeds</li>
-    </ul>
+    <header>
+        <h1>Healthy Nutrition Guide</h1>
+        <p>
+            A professional overview of essential healthy food categories and
+            daily nutrition practices designed to support long-term well-being.
+        </p>
+    </header>
 
-    <h2>Ordered List (Daily Healthy Eating Steps)</h2>
-    <ol>
-        <li>Start your day with fruits</li>
-        <li>Include vegetables in every meal</li>
-        <li>Choose whole grains over refined grains</li>
-        <li>Drink enough water</li>
-        <li>Avoid processed food</li>
-    </ol>
+    <!-- UNORDERED LIST -->
+    <section>
+        <h2>Core Healthy Food Categories</h2>
+        <ul>
+            <li>Fresh fruits and vegetables</li>
+            <li>Whole grains (brown rice, oats, quinoa)</li>
+            <li>Lean protein sources (fish, poultry, legumes)</li>
+            <li>Healthy fats (olive oil, nuts, seeds)</li>
+            <li>Low-fat dairy or plant-based alternatives</li>
+        </ul>
+    </section>
+
+    <!-- ORDERED LIST -->
+    <section>
+        <h2>Daily Healthy Eating Guidelines</h2>
+        <ol>
+            <li>Begin the day with a nutrient-rich breakfast</li>
+            <li>Include vegetables in every main meal</li>
+            <li>Choose whole foods over processed options</li>
+            <li>Maintain adequate daily hydration</li>
+            <li>Limit added sugars and refined carbohydrates</li>
+        </ol>
+    </section>
+
+    <footer>
+        © 2025 • Healthy Nutrition Guide • Professional Use
+    </footer>
+
+</main>
 
 </body>
 </html>
