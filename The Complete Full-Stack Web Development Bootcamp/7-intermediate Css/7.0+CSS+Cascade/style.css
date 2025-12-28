@@ -25,3 +25,18 @@ body{
 }
 
 
+*{color: wheat;
+background-color: wheat;
+
+}
+hr{
+  font-size: large;
+}
+
+hr,h1{
+  color: blueviolet;
+}
+div > p{
+  color: red;
+  background-color: black;
+}
